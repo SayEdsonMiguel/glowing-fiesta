@@ -1,0 +1,1 @@
+# Extensão compara-preço
