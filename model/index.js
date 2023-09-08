@@ -1,12 +1,11 @@
 const cheerio = require("cheerio");
 const { load } = cheerio;
 
-let $;
 const url =
   "https://www.amazon.com.br/kindle-11geracao-preto/dp/B09SWTG9GF/ref=sr_1_1?keywords=kindle&qid=1694050175&sprefix=kin%2Caps%2C444&sr=8-1&ufe=app_do%3Aamzn1.fos.95de73c3-5dda-43a7-bd1f-63af03b14751";
 
 async function main() {
-  return await getPrice();
+  console.log(await getPrice());
 }
 
 async function getHtml(url) {
@@ -19,10 +18,10 @@ async function getHtml(url) {
 async function getPrice() {
   const body = await getHtml(url);
 
-  $ = load(body);
+  let $ = load(body);
   return $(".a-offscreen")[0].children[0].data;
 }
 
 main();
 
-exports.main = main;
+exports.getPrice = getPrice;
